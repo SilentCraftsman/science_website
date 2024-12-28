@@ -1,0 +1,28 @@
+name: A workflow for deploy the science website
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Le workflow sera exécuté sur une machine virtuelle Ubuntu
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v2 # Cette étape récupère votre code source
+
+      - name: Configurer Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+      - name: Déployer sur GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.1.0 # Utilisation de l'action de déploiement GitHub Pages
+        with:
+          branch: gh-pages # La branche sur laquelle déployer
+          folder: . # Le dossier contenant vos fichiers (ici, la racine du dépôt)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
