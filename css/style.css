@@ -26,6 +26,7 @@ header h1 {
 
 nav ul {
   list-style-type: none;
+  padding: 0;
 }
 
 nav ul li {
@@ -62,11 +63,13 @@ article p {
 .gallery {
   display: flex;
   gap: 20px;
+  justify-content: center;
 }
 
 .gallery img {
   width: 45%;
   border-radius: 8px;
+  max-width: 100%; /* Ajout pour garantir que les images ne sortent pas du container */
 }
 
 form {
