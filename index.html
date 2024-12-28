@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Site Web de Science</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Bienvenue sur le Site Web de Science</h1>
+      <nav>
+        <ul>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="articles">
+      <h2>Articles Scientifiques</h2>
+      <article>
+        <h3>Découverte du Boson de Higgs</h3>
+        <p>
+          Le boson de Higgs a été découvert en 2012 au CERN. Cette particule est
+          essentielle pour comprendre la masse des autres particules
+          élémentaires.
+        </p>
+      </article>
+      <article>
+        <h3>Les Mystères des Trou Noir</h3>
+        <p>
+          Les trous noirs sont des régions de l'espace où la gravité est
+          tellement intense que rien, pas même la lumière, ne peut en échapper.
+        </p>
+      </article>
+    </section>
+
+    <section id="galerie">
+      <h2>Galerie d'Images</h2>
+      <div class="gallery">
+        <img src="images/higgs-boson.png" alt="Image du Boson de Higgs" />
+        <img src="images/trou-noir.png" alt="Image d'un Trou Noir" />
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required /><br />
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required /><br />
+
+        <label for="message">Message :</label><br />
+        <textarea id="message" name="message" rows="4" required></textarea
+        ><br />
+
+        <button type="submit">Envoyer</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 Site Web de Science | Licence MIT</p>
+    </footer>
+  </body>
+</html>
