@@ -1,28 +1,32 @@
-name: A workflow for deploy the science website
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main # Remplacez par la branche à partir de laquelle vous souhaitez déployer
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest # Le workflow sera exécuté sur une machine virtuelle Ubuntu
-
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout du code
-        uses: actions/checkout@v4 # Cette étape récupère votre code source
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Configurer Git
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-
-      - name: Déployer sur GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.1.0 # Utilisation de l'action de déploiement GitHub Pages
+      - name: Set up Node.js (si nécessaire)
+        uses: actions/setup-node@v2
         with:
-          branch: gh-pages # La branche sur laquelle déployer
-          folder: . # Le dossier contenant vos fichiers (ici, la racine du dépôt)
+          node-version: "14"
+
+      - name: Install dependencies
+        run: npm install # Si vous utilisez npm ou yarn pour gérer les dépendances
+
+      - name: Build
+        run: npm run build # Commande pour générer les fichiers statiques de votre site
+
+      - name: Deploy to GitHub Pages
+        uses: jamesives/github-pages-deploy-action@v4 # Utilisation de la version v4 stable
+        with:
+          branch: gh-pages # Branche sur laquelle déployer
+          folder: build # Dossier contenant les fichiers à déployer (à ajuster selon votre configuration)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
