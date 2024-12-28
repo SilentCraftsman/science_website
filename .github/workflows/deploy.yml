@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout du code
-        uses: actions/checkout@v2 # Cette étape récupère votre code source
+        uses: actions/checkout@v4 # Cette étape récupère votre code source
 
       - name: Configurer Git
         run: |
